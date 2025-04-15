@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT-Style Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #343541;
+        }
+        
+        .sidebar {
+            width: 260px;
+            background-color: #202123;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .icon-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .models-section {
+            padding: 10px 10px;
+        }
+        
+        .model-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 6px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            transition: background-color 0.2s;
+        }
+        
+        .model-item:hover {
+            background-color: #2D2E30;
+        }
+        
+        .model-item.active {
+            background-color: #2D2E30;
+        }
+        
+        .model-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #5436DA;
+        }
+        
+        .model-icon.blue {
+            background-color: #3B82F6;
+        }
+        
+        .model-icon.black {
+            background-color: #000000;
+        }
+        
+        .model-icon.aqua {
+            background-color: #2DD4BF;
+        }
+        
+        .more-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 6px;
+            cursor: pointer;
+            color: #8E8EA0;
+        }
+        
+        .explore-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 6px;
+            cursor: pointer;
+            color: white;
+            margin-top: 6px;
+        }
+        
+        .history-section {
+            margin-top: 16px;
+        }
+        
+        .history-heading {
+            padding: 10px 16px;
+            font-size: 12px;
+            color: #8E8EA0;
+            font-weight: 500;
+        }
+        
+        .history-item {
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .history-item:hover {
+            background-color: #2D2E30;
+        }
+        
+        .renew-button {
+            margin-top: auto;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #343541;
+            color: #ffffff;
+            position: relative;
+        }
+        
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .model-selector {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .temporary-button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #10a37f;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding-bottom: 120px;
+        }
+        
+        .welcome-heading {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 50px;
+        }
+        
+        .input-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 750px;
+            max-width: 90%;
+        }
+        
+        .input-box-container {
+            position: relative;
+            border-radius: 16px;
+            background-color: #40414f;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .input-box {
+            width: 100%;
+            border: none;
+            border-radius: 16px;
+            padding: 16px 50px 16px 15px;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+            background-color: transparent;
+            color: #ffffff;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .input-box::placeholder {
+            color: #8e8ea0;
+        }
+        
+        .input-tools {
+            display: flex;
+            padding: 8px 0;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .tool-button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background-color: #202123;
+            color: #ECECF1;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .input-controls {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .control-button {
+            background: none;
+            border: none;
+            color: #8e8ea0;
+            cursor: pointer;
+        }
+        
+        .help-button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #8e8ea0;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <button class="icon-button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+            <div style="display: flex; gap: 10px;">
+                <button class="icon-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 21L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="icon-button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="models-section">
+            <div class="model-item active">
+                <div class="model-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span>ChatGPT</span>
+            </div>
+            
+            <div class="model-item">
+                <div class="model-icon blue">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>Sora</span>
+            </div>
+            
+            <div class="model-item">
+                <div class="model-icon black">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="4" stroke-width="2"/>
+                        <path d="M12 4V8" stroke-width="2"/>
+                        <path d="M12 16V20" stroke-width="2"/>
+                        <path d="M4 12L8 12" stroke-width="2"/>
+                        <path d="M16 12L20 12" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>ALPHA GPT</span>
+            </div>
+            
+            <div class="model-item">
+                <div class="model-icon aqua">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke-width="2"/>
+                        <path d="M3 12H21" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span>AI Email Writer</span>
+            </div>
+            
+            <div class="more-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="6" r="2" fill="currentColor"/>
+                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                    <circle cx="12" cy="18" r="2" fill="currentColor"/>
+                </svg>
+                <span>1 more</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <div class="explore-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.34 17a10 10 0 1 1 17.32 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 14l2.5 2.5M12 8v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Explore GPTs</span>
+            </div>
+        </div>
+        
+        <div class="history-section">
+            <div class="history-heading">Yesterday</div>
+            <div class="history-item">WWI and Russian Revolution</div>
+            
+            <div class="history-heading">Previous 30 Days</div>
+            <div class="history-item">Research Achievement and LOCI</div>
+            
+            <div class="history-heading">February</div>
+            <div class="history-item">Modernity in European History</div>
+            <div class="history-item">Kenneth's Mural Analysis Reque...</div>
+            <div class="history-item">Texto extraído y resumido</div>
+            <div class="history-item">Fancy Synonyms for Applying</div>
+            <div class="history-item">Word Search Challenge</div>
+            <div class="history-item">Russian History Reading Guide</div>
+            <div class="history-item">Unit 7A Definitions</div>
+            <div class="history-item">European History Summary</div>
+            <div class="history-item">Practica Cancion Retry Request</div>
+        </div>
+        
+        <div class="spacer"></div>
+        
+        <div class="renew-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Renew Plus</span>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-nav">
+            <div class="model-selector">
+                ChatGPT
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="user-actions">
+                <div class="temporary-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Temporary
+                </div>
+                <div class="user-avatar">R</div>
+            </div>
+        </div>
+
+        <div class="welcome-container">
+            <h1 class="welcome-heading">What can I help with?</h1>
+        </div>
+        
+        <div class="input-container">
+            <div class="input-box-container">
+                <input type="text" class="input-box" id="userInput" placeholder="Ask anything" />
+                <div class="input-controls">
+                    <button class="control-button" id="micButton">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="control-button" id="sendButton">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="input-tools">
+                <button class="tool-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 21L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Search
+                </button>
+                <button class="tool-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M2.66998 18.95L7.59998 15.64C8.38998 15.09 9.52998 15.13 10.27 15.73L10.57 16C11.35 16.72 12.61 16.72 13.39 16L17.55 12.44C18.33 11.74 19.59 11.73 20.38 12.42L22 13.9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Reason
+                </button>
+                <button class="tool-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="5" cy="12" r="1" fill="currentColor"/>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                        <circle cx="19" cy="12" r="1" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <button class="help-button">?</button>
+    </div>
+
+    <script>
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+        const micButton = document.getElementById('micButton');
+        
+        // Focus the input field automatically
+        window.addEventListener('load', () => {
+            userInput.focus();
+        });
+        
+        // Enable/disable send button based on input
+        userInput.addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                sendButton.style.color = '#8e8ea0';
+            } else {
+                sendButton.style.color = '#10a37f';
+            }
+        });
+        
+        // Handle Enter key
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (this.value.trim() !== '') {
+                    // Would handle sending the message here
+                    alert('Message sent: ' + this.value);
+                    this.value = '';
+                    sendButton.style.color = '#8e8ea0';
+                }
+            }
+        });
+        
+        // Send button click handler
+        sendButton.addEventListener('click', () => {
+            if (userInput.value.trim() !== '') {
+                alert('Message sent: ' + userInput.value);
+                userInput.value = '';
+                sendButton.style.color = '#8e8ea0';
+            }
+        });
+    </script>
+</body>
+</html>
