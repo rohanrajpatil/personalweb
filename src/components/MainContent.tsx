@@ -1,11 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const MainContent = () => {
   const [inputValue, setInputValue] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [messages, setMessages] = useState<{ text: string; showResponse: boolean }[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -16,15 +20,49 @@ const MainContent = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    if (messages.length > 0 && scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [messages]);
+
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
+    // Auto-resize the textarea
+    e.target.style.height = 'auto';
+    e.target.style.height = e.target.scrollHeight + 'px';
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (inputValue.trim()) {
-      console.log('Message sent:', inputValue);
+    if (!inputValue.trim()) return;
+
+    setIsSending(true);
+    setSendStatus('idle');
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: inputValue }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+
+      setMessages(prev => [...prev, { text: inputValue, showResponse: true }]);
       setInputValue('');
+    } catch (error) {
+      setSendStatus('error');
+      console.error('Error sending email:', error);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -33,7 +71,10 @@ const MainContent = () => {
   };
 
   const UserMessage = ({ message }: { message: string }) => (
-    <div className="flex justify-end mb-2 px-48">
+    <div className="flex justify-end mb-2 px-48 items-center gap-4">
+      <div className="w-8 h-8 rounded-full bg-[#10a37f] flex items-center justify-center text-white font-semibold">
+        Y
+      </div>
       <div className="bg-[#343541] rounded-2xl px-4 py-2 inline-block text-white">
         {message}
       </div>
@@ -60,16 +101,25 @@ const MainContent = () => {
         }
       `}</style>
 
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xMiAyMmM1LjUyMyAwIDEwLTQuNDc3IDEwLTEwUzE3LjUyMyAyIDEyIDIgMiA2LjQ3NyAyIDEyczQuNDc3IDEwIDEwIDEwWiIvPjxwYXRoIGQ9Ik0xMiA4djgiLz48cGF0aCBkPSJNOCAxMmg4Ii8+PC9zdmc+')] bg-cover bg-center opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          maskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent 50%)`,
+          WebkitMaskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent 50%)`
+        }}
+      />
+
       {/* Cursor Glow Effect */}
       <div 
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(29, 78, 216, 0.15), transparent 80%)`
+          background: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(29, 78, 216, 0.3), transparent 50%)`
         }}
       />
 
       {/* Top Navigation */}
-      <div className="flex justify-between items-center p-5 bg-[#1a1a1a] relative">
+      <div className="flex justify-end items-center p-5 bg-[#1a1a1a] relative">
         <div className="flex items-center gap-3">
           <div className="relative">
             <button 
@@ -90,7 +140,7 @@ const MainContent = () => {
             </button>
             
             {isDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-48 bg-[#2a2a2a] rounded-lg shadow-lg py-3 z-50">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-[#2a2a2a] rounded-lg shadow-lg py-3 z-50">
                 <div className="flex justify-around items-center px-4">
                   {/* GitHub Icon */}
                   <a href="#" className="text-white hover:text-[#10a37f] transition-colors">
@@ -118,7 +168,7 @@ const MainContent = () => {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto pb-0 overscroll-contain scrollbar-hide">
+      <div ref={scrollContainerRef} className="flex-1 overflow-y-auto pb-0 overscroll-contain scrollbar-hide">
         {/* About Me Section */}
         <div id="about" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
@@ -189,13 +239,21 @@ const MainContent = () => {
             <section className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Research</h2>
               <div className="max-w-3xl w-full mx-auto space-y-4">
-                <div className="bg-[#2a2a2a] p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">Research Paper 1</h3>
-                  <p className="text-gray-300">Abstract and key findings</p>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] group-hover:rotate-[-0.5deg] relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
+                    <h3 className="text-xl font-semibold mb-2">Research Paper 1</h3>
+                    <p className="text-gray-300">Abstract and key findings</p>
+                  </div>
                 </div>
-                <div className="bg-[#2a2a2a] p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">Research Paper 2</h3>
-                  <p className="text-gray-300">Abstract and key findings</p>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] group-hover:rotate-[0.5deg] relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
+                    <h3 className="text-xl font-semibold mb-2">Research Paper 2</h3>
+                    <p className="text-gray-300">Abstract and key findings</p>
+                  </div>
                 </div>
               </div>
             </section>
@@ -225,22 +283,43 @@ const MainContent = () => {
             </section>
           </AssistantMessage>
         </div>
+
+        {/* Email Messages Section */}
+        {messages.map((message, index) => (
+          <div key={index} className="h-screen overflow-hidden flex flex-col">
+            <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
+              <UserMessage message={message.text} />
+            </div>
+            {message.showResponse && (
+              <AssistantMessage>
+                <section className="flex flex-col items-center justify-center">
+                  <p className="text-lg text-gray-300 max-w-2xl text-center">
+                    Wait till I check my email...
+                  </p>
+                </section>
+              </AssistantMessage>
+            )}
+          </div>
+        ))}
       </div>
 
       {/* Input Section - Fixed at bottom */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[750px] max-w-[90%] z-40">
         <form onSubmit={handleSubmit}>
-          <div className="relative rounded-2xl bg-[#40414f] border border-white/10 shadow-lg">
-            <input
-              type="text"
+          <div className="relative rounded-2xl bg-[#40414f] border border-white/10 shadow-lg flex flex-col-reverse min-h-[56px]">
+            <textarea
               value={inputValue}
-              onChange={handleInputChange}
-              placeholder="Shoot me a quick email"
-              className="w-full rounded-2xl py-4 px-4 pr-12 bg-transparent text-white outline-none"
+              onChange={handleTextareaChange}
+              placeholder="Anymore questions?"
+              className="w-full rounded-2xl py-4 px-4 pr-12 bg-transparent text-white outline-none resize-none min-h-[56px] max-h-[200px] overflow-y-auto"
+              disabled={isSending}
+              rows={1}
+              style={{ height: 'auto' }}
             />
             <button 
               type="submit" 
-              className={`absolute right-3 bottom-4 ${inputValue.trim() ? 'text-[#10a37f]' : 'text-[#8e8ea0]'}`}
+              className={`absolute right-3 bottom-3 ${inputValue.trim() ? 'text-[#10a37f]' : 'text-[#8e8ea0]'}`}
+              disabled={isSending || !inputValue.trim()}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
