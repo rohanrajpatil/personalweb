@@ -143,13 +143,13 @@ const MainContent = () => {
             <section id="projects" className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-                <div className="bg-[#2a2a2a] p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">Project 1</h3>
-                  <p className="text-gray-300">Description of project 1</p>
+                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group [transition:none] hover:[transition:transform_0.2s,shadow_0.2s,background-color_0.2s]">
+                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 1</h3>
+                  <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 1</p>
                 </div>
-                <div className="bg-[#2a2a2a] p-6 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">Project 2</h3>
-                  <p className="text-gray-300">Description of project 2</p>
+                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group [transition:none] hover:[transition:transform_0.2s,shadow_0.2s,background-color_0.2s]">
+                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 2</h3>
+                  <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 2</p>
                 </div>
               </div>
             </section>
@@ -235,12 +235,12 @@ const MainContent = () => {
               type="text"
               value={inputValue}
               onChange={handleInputChange}
-              placeholder="Shoot me a quick email (rohanrpatil764@gmail.com)"
+              placeholder="Shoot me a quick email"
               className="w-full rounded-2xl py-4 px-4 pr-12 bg-transparent text-white outline-none"
             />
             <button 
               type="submit" 
-              className={`absolute right-3 bottom-3 ${inputValue.trim() ? 'text-[#10a37f]' : 'text-[#8e8ea0]'}`}
+              className={`absolute right-3 bottom-4 ${inputValue.trim() ? 'text-[#10a37f]' : 'text-[#8e8ea0]'}`}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
