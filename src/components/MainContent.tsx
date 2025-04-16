@@ -103,7 +103,7 @@ const MainContent = () => {
 
       {/* Background Image */}
       <div 
-        className="fixed inset-0 bg-[url('/neural-net.jpg')] bg-cover bg-center opacity-100 transition-opacity duration-300 pointer-events-none"
+        className="fixed inset-0 bg-[url('/neural-net.jpg')] bg-cover bg-center opacity-100 transition-opacity pointer-events-none"
         style={{
           maskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent 50%)`,
           WebkitMaskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent 50%)`
@@ -112,15 +112,15 @@ const MainContent = () => {
 
       {/* Cursor Glow Effect */}
       <div 
-        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+        className="pointer-events-none fixed inset-0 z-1 transition-opacity"
         style={{
           background: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(29, 78, 216, 0.3), transparent 50%)`
         }}
       />
 
-      {/* Top Navigation */}
-      <div className="flex justify-end items-center p-5 bg-[#1a1a1a] relative">
-        <div className="flex items-center gap-3">
+      {/* Top Navigation - Now Right Side Navigation */}
+      <div className="fixed right-0 top-0 bottom-0 w-20 flex flex-col items-center py-5">
+        <div className="absolute top-5 -left-20">
           <div className="relative">
             <button 
               onClick={toggleDropdown}
@@ -133,7 +133,7 @@ const MainContent = () => {
                 viewBox="0 0 24 24" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
-                className={`transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                className={`transform transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
               >
                 <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -193,11 +193,11 @@ const MainContent = () => {
             <section id="projects" className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group [transition:none] hover:[transition:transform_0.2s,shadow_0.2s,background-color_0.2s]">
+                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
                   <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 1</h3>
                   <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 1</p>
                 </div>
-                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group [transition:none] hover:[transition:transform_0.2s,shadow_0.2s,background-color_0.2s]">
+                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
                   <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 2</h3>
                   <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 2</p>
                 </div>
@@ -240,16 +240,16 @@ const MainContent = () => {
               <h2 className="text-4xl font-bold mb-8">Research</h2>
               <div className="max-w-3xl w-full mx-auto space-y-4">
                 <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] group-hover:rotate-[-0.5deg] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
                     <h3 className="text-xl font-semibold mb-2">Research Paper 1</h3>
                     <p className="text-gray-300">Abstract and key findings</p>
                   </div>
                 </div>
                 <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] group-hover:rotate-[0.5deg] relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
                     <h3 className="text-xl font-semibold mb-2">Research Paper 2</h3>
                     <p className="text-gray-300">Abstract and key findings</p>
