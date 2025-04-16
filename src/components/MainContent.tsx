@@ -193,13 +193,21 @@ const MainContent = () => {
             <section id="projects" className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
-                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 1</h3>
-                  <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 1</p>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
+                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 1</h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 1</p>
+                  </div>
                 </div>
-                <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
-                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 2</h3>
-                  <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 2</p>
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
+                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 2</h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 2</p>
+                  </div>
                 </div>
               </div>
             </section>
@@ -215,15 +223,33 @@ const MainContent = () => {
             <section id="experience" className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Work Experience</h2>
               <div className="max-w-2xl w-full space-y-8">
-                <div className="border-l-2 border-[#10a37f] pl-4">
-                  <h3 className="text-xl font-semibold">Senior Developer</h3>
-                  <p className="text-gray-300">Company Name • 2020 - Present</p>
-                  <p className="text-gray-400 mt-2">Description of role and achievements</p>
+                <div className="relative group">
+                  <div className="absolute -left-3 top-0 h-full w-[2px] bg-gradient-to-b from-[#10a37f] to-transparent" />
+                  <div className="bg-[#2a2a2a] p-8 rounded-lg transform transition-all duration-300 border-l-4 border-[#10a37f] group-hover:translate-x-2">
+                    <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all duration-300" />
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Senior Developer</h3>
+                        <p className="text-gray-300 mt-1">Company Name</p>
+                      </div>
+                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2020 - Present</span>
+                    </div>
+                    <p className="text-gray-400 mt-4">Description of role and achievements</p>
+                  </div>
                 </div>
-                <div className="border-l-2 border-[#10a37f] pl-4">
-                  <h3 className="text-xl font-semibold">Full Stack Developer</h3>
-                  <p className="text-gray-300">Previous Company • 2018 - 2020</p>
-                  <p className="text-gray-400 mt-2">Description of role and achievements</p>
+                <div className="relative group">
+                  <div className="absolute -left-3 top-0 h-full w-[2px] bg-gradient-to-b from-[#10a37f] to-transparent" />
+                  <div className="bg-[#2a2a2a] p-8 rounded-lg transform transition-all duration-300 border-l-4 border-[#10a37f] group-hover:translate-x-2">
+                    <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all duration-300" />
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Full Stack Developer</h3>
+                        <p className="text-gray-300 mt-1">Previous Company</p>
+                      </div>
+                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2018 - 2020</span>
+                    </div>
+                    <p className="text-gray-400 mt-4">Description of role and achievements</p>
+                  </div>
                 </div>
               </div>
             </section>
@@ -241,18 +267,18 @@ const MainContent = () => {
               <div className="max-w-3xl w-full mx-auto space-y-4">
                 <div className="group relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                    <h3 className="text-xl font-semibold mb-2">Research Paper 1</h3>
-                    <p className="text-gray-300">Abstract and key findings</p>
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Research Paper 1</h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Abstract and key findings</p>
                   </div>
                 </div>
                 <div className="group relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all">
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
                     <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                    <h3 className="text-xl font-semibold mb-2">Research Paper 2</h3>
-                    <p className="text-gray-300">Abstract and key findings</p>
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Research Paper 2</h3>
+                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Abstract and key findings</p>
                   </div>
                 </div>
               </div>
@@ -268,16 +294,54 @@ const MainContent = () => {
           <AssistantMessage>
             <section id="education" className="flex flex-col items-center justify-center h-full">
               <h2 className="text-4xl font-bold mb-8">Education</h2>
-              <div className="max-w-2xl w-full space-y-8">
-                <div className="border-l-2 border-[#10a37f] pl-4">
-                  <h3 className="text-xl font-semibold">Master's Degree</h3>
-                  <p className="text-gray-300">University Name • 2018 - 2020</p>
-                  <p className="text-gray-400 mt-2">Relevant coursework and achievements</p>
+              <div className="max-w-2xl w-full space-y-6">
+                <div className="group">
+                  <div className="relative bg-[#2a2a2a] p-6 rounded-xl overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-[#10a37f]/20 flex items-center justify-center group-hover:bg-[#10a37f]/30 transition-colors">
+                          <svg className="w-6 h-6 text-[#10a37f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v7" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Master's Degree</h3>
+                          <p className="text-gray-300">University Name</p>
+                        </div>
+                      </div>
+                      <div className="ml-16">
+                        <div className="text-sm text-[#10a37f] mb-2">2018 - 2020</div>
+                        <p className="text-gray-400">Relevant coursework and achievements</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="border-l-2 border-[#10a37f] pl-4">
-                  <h3 className="text-xl font-semibold">Bachelor's Degree</h3>
-                  <p className="text-gray-300">University Name • 2014 - 2018</p>
-                  <p className="text-gray-400 mt-2">Relevant coursework and achievements</p>
+                <div className="group">
+                  <div className="relative bg-[#2a2a2a] p-6 rounded-xl overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-[#10a37f]/20 flex items-center justify-center group-hover:bg-[#10a37f]/30 transition-colors">
+                          <svg className="w-6 h-6 text-[#10a37f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v7" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Bachelor's Degree</h3>
+                          <p className="text-gray-300">University Name</p>
+                        </div>
+                      </div>
+                      <div className="ml-16">
+                        <div className="text-sm text-[#10a37f] mb-2">2014 - 2018</div>
+                        <p className="text-gray-400">Relevant coursework and achievements</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
