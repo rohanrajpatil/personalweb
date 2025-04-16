@@ -108,9 +108,9 @@ const MainContent = () => {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto snap-y snap-mandatory">
+      <div className="flex-1 overflow-y-auto snap-y snap-mandatory pb-0">
         {/* About Me Section */}
-        <div className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="about" className="snap-start h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="Who is this?" />
           </div>
@@ -125,7 +125,7 @@ const MainContent = () => {
         </div>
 
         {/* Projects Section */}
-        <div className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="projects" className="snap-start h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="What have you worked on?" />
           </div>
@@ -147,7 +147,7 @@ const MainContent = () => {
         </div>
 
         {/* Work Experience Section */}
-        <div className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="experience" className="snap-start h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="Tell me about your work experience" />
           </div>
@@ -193,7 +193,7 @@ const MainContent = () => {
         </div>
 
         {/* Education Section */}
-        <div className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="education" className="snap-start h-[calc(100vh+80px)] overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="What's your educational background?" />
           </div>
@@ -218,7 +218,7 @@ const MainContent = () => {
       </div>
 
       {/* Input Section - Fixed at bottom */}
-      <div className="absolute bottom-8 left-[calc(50%+32px)] transform -translate-x-1/2 w-[750px] max-w-[90%] z-40">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-[750px] max-w-[90%] z-40">
         <form onSubmit={handleSubmit}>
           <div className="relative rounded-2xl bg-[#40414f] border border-white/10 shadow-lg">
             <input
