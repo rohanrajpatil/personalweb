@@ -14,32 +14,6 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-[#1a1a1a] text-white flex flex-col h-screen border-l border-white/10">
       {/* Header with logos */}
-      <div className="flex justify-between items-center p-4">
-        <button className="w-8 h-8 relative rounded-full overflow-hidden hover:opacity-80 transition-opacity">
-          <Image 
-            src="/github.png" 
-            alt="GitHub" 
-            fill
-            className="object-cover p-1"
-          />
-        </button>
-        <button className="w-8 h-8 relative rounded-full overflow-hidden hover:opacity-80 transition-opacity">
-          <Image 
-            src="/linkedin.png" 
-            alt="LinkedIn" 
-            fill
-            className="object-cover p-1"
-          />
-        </button>
-        <button className="w-8 h-8 relative rounded-full overflow-hidden hover:opacity-80 transition-opacity">
-          <Image 
-            src="/download.jpg" 
-            alt="Download" 
-            fill
-            className="object-cover p-1"
-          />
-        </button>
-      </div>
 
       {/* Main Sections - Centered */}
       <div className="flex-1 flex items-center">
