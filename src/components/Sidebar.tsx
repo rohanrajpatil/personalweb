@@ -12,7 +12,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-64 bg-[#1a1a1a] text-white flex flex-col h-screen border-l border-white/10">
+    <div className="w-64 h-screen sticky top-0 bg-[#1a1a1a] p-4 flex flex-col gap-2">
       {/* Header with logos */}
 
       {/* Main Sections - Centered */}

@@ -50,6 +50,16 @@ const MainContent = () => {
 
   return (
     <div className="flex-1 flex flex-col bg-[#1a1a1a] text-white relative overflow-hidden">
+      <style jsx global>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;     /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;             /* Chrome, Safari and Opera */
+        }
+      `}</style>
+
       {/* Cursor Glow Effect */}
       <div 
         className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
@@ -108,9 +118,9 @@ const MainContent = () => {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto snap-y snap-mandatory pb-0">
+      <div className="flex-1 overflow-y-auto pb-0 overscroll-contain scrollbar-hide">
         {/* About Me Section */}
-        <div id="about" className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="about" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="Who is this?" />
           </div>
@@ -125,7 +135,7 @@ const MainContent = () => {
         </div>
 
         {/* Projects Section */}
-        <div id="projects" className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="projects" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="What have you worked on?" />
           </div>
@@ -147,7 +157,7 @@ const MainContent = () => {
         </div>
 
         {/* Work Experience Section */}
-        <div id="experience" className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="experience" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="Tell me about your work experience" />
           </div>
@@ -171,7 +181,7 @@ const MainContent = () => {
         </div>
 
         {/* Research Section */}
-        <div id="research" className="snap-start h-screen overflow-hidden flex flex-col">
+        <div id="research" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="What research have you done?" />
           </div>
@@ -193,12 +203,12 @@ const MainContent = () => {
         </div>
 
         {/* Education Section */}
-        <div id="education" className="snap-start h-[calc(100vh+80px)] overflow-hidden flex flex-col">
+        <div id="education" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
             <UserMessage message="What's your educational background?" />
           </div>
           <AssistantMessage>
-            <section id="education" className="flex flex-col items-center justify-center">
+            <section id="education" className="flex flex-col items-center justify-center h-full">
               <h2 className="text-4xl font-bold mb-8">Education</h2>
               <div className="max-w-2xl w-full space-y-8">
                 <div className="border-l-2 border-[#10a37f] pl-4">
