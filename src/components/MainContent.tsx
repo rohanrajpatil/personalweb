@@ -153,7 +153,7 @@ const MainContent = () => {
       <div ref={scrollContainerRef} className="flex-1 overflow-y-auto pb-0 overscroll-contain scrollbar-hide">
         {/* About Me Section */}
         <div id="about" className="h-screen overflow-hidden flex flex-col">
-          <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
+          <div className="min-h-[60px] bg-[#1a1a1a] flex items-end pt">
             <UserMessage message="Who is this?" />
           </div>
           <AssistantMessage>
@@ -187,27 +187,38 @@ const MainContent = () => {
                   {/* Keep the gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Inner card div with background and inverted text colors on hover */}
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]"> {/* Background transitions to accent green */}
-
-                    {/* Modified content - Text colors invert to dark on hover */}
-                    {/* Using black for heading, dark gray for paragraph */}
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">ResQ</h3> {/* Text changes to black */}
-                    <p className="text-gray-300 group-hover:text-gray-800">Description of project 1</p> {/* Text changes to dark gray */}
-
-                  </div>
+                  <a 
+                        href="https://github.com/NoviFBLA" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="block"
+                      >
+                          <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]">
+                            {/* Modified content - Text colors invert to dark on hover */}
+                            {/* Using black for heading, dark gray for paragraph */}
+                            <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">ResQ</h3> {/* Text changes to black */}
+                            <p className="text-gray-300 group-hover:text-gray-800">Coded ResQ an application with an AI Chatbot for natural disaster updates & safety help.
+                            Finalist in several hackathons and pitched to 30+ engineers.</p> {/* Text changes to dark gray */}
+                    </div>
+                  </a>
                 </div>
                 <div className="group relative">
                   {/* Keep the gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* Inner card div with background and inverted text colors on hover */}
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]"> {/* Background transitions to accent green */}
-
-                    {/* Modified content - Text colors invert to dark on hover */}
-                    {/* Using black for heading, dark gray for paragraph */}
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">MakeMore</h3> {/* Text changes to black */}
-                    <p className="text-gray-300 group-hover:text-gray-800">Description of project 2</p> {/* Text changes to dark gray */}
-
-                  </div>
+                  <a 
+                        href="https://github.com/rohanrajpatil" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="block"
+                      >
+                          <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]">
+                            {/* Modified content - Text colors invert to dark on hover */}
+                            {/* Using black for heading, dark gray for paragraph */}
+                            <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">MakeMore</h3> {/* Text changes to black */}
+                            <p className="text-gray-300 group-hover:text-gray-800">An autoregressive character-level language model, with a wide choice of models from bigrams all the way to a Transformer (exactly as seen in GPT)</p> {/* Text changes to dark gray */}
+                    </div>
+                  </a>
                 </div>
               </div>
             </section>
@@ -263,19 +274,24 @@ const MainContent = () => {
             <UserMessage message="What research have you done?" />
           </div>
           <AssistantMessage>
-            <section className="flex flex-col items-center justify-center">
-              <h2 className="text-4xl font-bold mb-8">Research</h2>
-              <div className="max-w-3xl w-full mx-auto space-y-4">
-                <div className="group relative perspective perspective-origin-bottom">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.2)] hover:bg-[#2d2d2d] cursor-pointer relative transform-style-preserve-3d group-hover:-rotate-x-30 group-hover:rotate-z-6 group-hover:translate-y-5 group-hover:translate-z-10 transition-all duration-300 ease-in-out">
-                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAMCA2MCA2MDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f]">Research Paper 1</h3>
-                  <p className="text-gray-300 group-hover:text-gray-200">Abstract and key findings</p>
-                  </div>    
-                </div>
-              </div>
-            </section>
+          <section className="flex flex-col items-center justify-center">
+  <h2 className="text-4xl font-bold mb-8">Research</h2>
+  <div className="max-w-3xl w-full mx-auto space-y-4">
+    <div className="group relative perspective perspective-origin-bottom">
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+      <a 
+        href="https://openreview.net/pdf?id=iilhN2MycO#" 
+        className="block bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.2)] hover:bg-[#2d2d2d] cursor-pointer relative transform-style-preserve-3d group-hover:-rotate-x-30 group-hover:rotate-z-6 group-hover:translate-y-5 group-hover:translate-z-10 transition-all duration-300 ease-in-out"
+      >
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAMCA2MCA2MDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
+        <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f]">MALIBU Benchmark: Multi-Agent LLM Implicit Bias Uncovered</h3>
+        <p className="text-gray-300 group-hover:text-gray-200">
+          A novel benchmark for detecting implicit bias across multi-agent LLM interactions through structured scenario assessments. MALIBU evaluates how AI personas perform tasks and make decisions when presented with varying demographic contexts. This groundbreaking work on quantifying implicit biases in leading language models has been recognized with acceptances at both the <span className="hover:text-white transition-colors duration-200">NAACL Student Research Workshop and ICLR Workshop</span>.
+        </p>
+      </a>    
+    </div>
+  </div>
+</section>
           </AssistantMessage>
         </div>
 
