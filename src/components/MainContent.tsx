@@ -165,7 +165,7 @@ const MainContent = () => {
                 className="w-64 h-64 rounded-full mb-6 object-cover relative bg-[#1a1a1a] z-20"
               />
 
-              <h2 className="text-4xl font-bold mb-8">I am Rohan Rajasekhara Patil</h2>
+              <h2 className="text-4xl font-bold mb-8">Rohan Rajasekhara Patil</h2>
               <p className="text-lg text-gray-300 max-w-2xl text-center">
               Welcome! I’m a passionate developer eager to deepen my grasp of machine learning and to explore both its real‑world applications and the underlying mechanics that make it tick.
               </p>
@@ -229,12 +229,13 @@ const MainContent = () => {
                     <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all " />
                     <div className="flex items-start justify-between">
                       <div>
-                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Senior Developer</h3>
-                        <p className="text-gray-300 mt-1">Company Name</p>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">AI Specialist in Finance and English</h3>
+                        <p className="text-gray-300 mt-1">Outlier</p>
                       </div>
-                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2020 - Present</span>
+                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2024-Present</span>
                     </div>
-                    <p className="text-gray-400 mt-4">Description of role and achievements</p>
+                    <p className="text-gray-400 mt-4">Design, optimize, and deploy cutting-edge AI models in English and finance, driving impactful, ethical solutions in Generative AI.
+                    </p>
                   </div>
                 </div>
                 <div className="relative group">
@@ -243,12 +244,12 @@ const MainContent = () => {
                     <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all " />
                     <div className="flex items-start justify-between">
                       <div>
-                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Full Stack Developer</h3>
-                        <p className="text-gray-300 mt-1">Previous Company</p>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Python Coding Tutor</h3>
+                        <p className="text-gray-300 mt-1">Detroit Education Society</p>
                       </div>
-                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2018 - 2020</span>
+                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2022-2023</span>
                     </div>
-                    <p className="text-gray-400 mt-4">Description of role and achievements</p>
+                    <p className="text-gray-400 mt-4">Prepared Course Materials Taught Coding Language To A Multitude of Students</p>
                   </div>
                 </div>
               </div>
