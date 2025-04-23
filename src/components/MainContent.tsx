@@ -64,12 +64,14 @@ const MainContent = () => {
 
   const UserMessage = ({ message }: { message: string }) => (
     <div className="flex justify-end mb-2 px-48 items-center gap-4">
-      <div className="w-8 h-8 rounded-full bg-[#10a37f] flex items-center justify-center text-white font-semibold">
-        Y
-      </div>
-      <div className="bg-[#343541] rounded-2xl px-4 py-2 inline-block text-white">
-        {message}
-      </div>
+        {/* Icon on the right (due to flex-row-reverse on the container) */}
+        <div className="w-8 h-8 rounded-full bg-[#8e8ea0] flex items-center justify-center text-white font-semibold flex-shrink-0">
+           A {/* Or an icon */}
+        </div>
+        {/* Message bubble - placed BEFORE the icon in the HTML flow */}
+        <div className="bg-[#343541] rounded-2xl px-4 py-2 inline-block text-white max-w-lg overflow-hidden break-words"> {/* Use a slightly different background than user if desired */}
+           {message}
+        </div>
     </div>
   );
 
@@ -123,13 +125,13 @@ const MainContent = () => {
               <div className="absolute top-full right-0 mt-2 w-48 bg-[#2a2a2a] rounded-lg shadow-lg py-3 z-50">
                 <div className="flex justify-around items-center px-4">
                   {/* GitHub Icon */}
-                  <a href="#" className="text-white hover:text-[#10a37f] transition-colors">
+                  <a href="https://github.com/rohanrajpatil" className="text-white hover:text-[#10a37f] transition-colors">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
                     </svg>
                   </a>
                   {/* LinkedIn Icon */}
-                  <a href="#" className="text-white hover:text-[#10a37f] transition-colors">
+                  <a href="https://www.linkedin.com/in/rohan-patil-4971942b9/" className="text-white hover:text-[#10a37f] transition-colors">
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
@@ -181,20 +183,30 @@ const MainContent = () => {
             <section id="projects" className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Projects</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
-                <div className="group relative">
+              <div className="group relative">
+                  {/* Keep the gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 1</h3>
-                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 1</p>
+                  {/* Inner card div with background and inverted text colors on hover */}
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]"> {/* Background transitions to accent green */}
+
+                    {/* Modified content - Text colors invert to dark on hover */}
+                    {/* Using black for heading, dark gray for paragraph */}
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">Project 1</h3> {/* Text changes to black */}
+                    <p className="text-gray-300 group-hover:text-gray-800">Description of project 1</p> {/* Text changes to dark gray */}
+
                   </div>
                 </div>
                 <div className="group relative">
+                  {/* Keep the gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Project 2</h3>
-                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Description of project 2</p>
+                  {/* Inner card div with background and inverted text colors on hover */}
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]"> {/* Background transitions to accent green */}
+
+                    {/* Modified content - Text colors invert to dark on hover */}
+                    {/* Using black for heading, dark gray for paragraph */}
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">Project 2</h3> {/* Text changes to black */}
+                    <p className="text-gray-300 group-hover:text-gray-800">Description of project 2</p> {/* Text changes to dark gray */}
+
                   </div>
                 </div>
               </div>
@@ -253,21 +265,13 @@ const MainContent = () => {
             <section className="flex flex-col items-center justify-center">
               <h2 className="text-4xl font-bold mb-8">Research</h2>
               <div className="max-w-3xl w-full mx-auto space-y-4">
-                <div className="group relative">
+                <div className="group relative perspective perspective-origin-bottom">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Research Paper 1</h3>
-                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Abstract and key findings</p>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] hover:bg-[#2d2d2d] cursor-pointer group-hover:w-full group-hover:transition-all relative">
-                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f] [transition:none]">Research Paper 2</h3>
-                    <p className="text-gray-300 group-hover:text-gray-200 [transition:none]">Abstract and key findings</p>
-                  </div>
+                  <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.2)] hover:bg-[#2d2d2d] cursor-pointer relative transform-style-preserve-3d group-hover:-rotate-x-30 group-hover:rotate-z-6 group-hover:translate-y-5 group-hover:translate-z-10 transition-all duration-300 ease-in-out">
+                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAMCA2MCA2MDYwIj48cGF0aCBkPSJNMzAgMTVjLTguMjg0IDAtMTUgNi43MTYtMTUgMTVzNi43MTYgMTUgMTUgMTUgMTUtNi43MTYgMTUtMTUtNi43MTYtMTUtMTUtMTV6bTAgMjVjLTUuNTIzIDAtMTAtNC40NzctMTAtMTBzNC40NzctMTAgMTAtMTAgMTAgNC40NzcgMTAgMTAtNC40NzcgMTAtMTAgMTB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-5" />
+                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-[#10a37f]">Research Paper 1</h3>
+                  <p className="text-gray-300 group-hover:text-gray-200">Abstract and key findings</p>
+                  </div>    
                 </div>
               </div>
             </section>
@@ -296,37 +300,23 @@ const MainContent = () => {
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Master's Degree</h3>
-                          <p className="text-gray-300">University Name</p>
+                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">In Progress...</h3>
+                          <p className="text-gray-300">Novi High School</p>
                         </div>
                       </div>
                       <div className="ml-16">
-                        <div className="text-sm text-[#10a37f] mb-2">2018 - 2020</div>
-                        <p className="text-gray-400">Relevant coursework and achievements</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="group">
-                  <div className="relative bg-[#2a2a2a] p-6 rounded-xl overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform" />
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#10a37f]/20 flex items-center justify-center group-hover:bg-[#10a37f]/30 transition-colors">
-                          <svg className="w-6 h-6 text-[#10a37f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v7" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Bachelor's Degree</h3>
-                          <p className="text-gray-300">University Name</p>
-                        </div>
-                      </div>
-                      <div className="ml-16">
-                        <div className="text-sm text-[#10a37f] mb-2">2014 - 2018</div>
-                        <p className="text-gray-400">Relevant coursework and achievements</p>
+                        <div className="text-sm text-[#10a37f] mb-2">2021 - 2025</div>
+                        <div className="text-gray-400"> {/* Container div for shared text color */}
+                        <p className="mb-2">
+                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Relevant Coursework:</span> Calculus I, II, Multivariable, AP Computer Science
+            </p>
+            <p className="mb-2">
+                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Weighted GPA:</span> 4.5+
+            </p>
+            <p>
+                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">ACT Score :</span> 36/36
+            </p>
+</div>
                       </div>
                     </div>
                   </div>
@@ -346,7 +336,7 @@ const MainContent = () => {
               <AssistantMessage>
                 <section className="flex flex-col items-center justify-center">
                   <p className="text-lg text-gray-300 max-w-2xl text-center">
-                    Wait till I check my email...
+                    Loading...
                   </p>
                 </section>
               </AssistantMessage>
@@ -360,9 +350,20 @@ const MainContent = () => {
         <form onSubmit={handleSubmit}>
           <div className="relative rounded-2xl bg-[#40414f] border border-white/10 shadow-lg flex flex-col-reverse min-h-[56px]">
             <textarea
+            onKeyDown={(e) => {
+
+            if (e.key === 'Enter' && !e.shiftKey) {
+              
+            e.preventDefault();         // don’t insert a newline
+              
+              handleSubmit(e as any);     // trigger the same submit logic
+              
+            }
+              
+          }}
               value={inputValue}
               onChange={handleTextareaChange}
-              placeholder="Anymore questions?"
+              placeholder="Anymore questions? (this goes to my email)"
               className="w-full rounded-2xl py-4 px-4 pr-12 bg-transparent text-white outline-none resize-none min-h-[56px] max-h-[200px] overflow-y-auto"
               disabled={isSending}
               rows={1}
