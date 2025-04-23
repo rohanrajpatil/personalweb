@@ -191,7 +191,7 @@ const MainContent = () => {
 
                     {/* Modified content - Text colors invert to dark on hover */}
                     {/* Using black for heading, dark gray for paragraph */}
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">Project 1</h3> {/* Text changes to black */}
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">ResQ</h3> {/* Text changes to black */}
                     <p className="text-gray-300 group-hover:text-gray-800">Description of project 1</p> {/* Text changes to dark gray */}
 
                   </div>
@@ -204,7 +204,7 @@ const MainContent = () => {
 
                     {/* Modified content - Text colors invert to dark on hover */}
                     {/* Using black for heading, dark gray for paragraph */}
-                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">Project 2</h3> {/* Text changes to black */}
+                    <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">MakeMore</h3> {/* Text changes to black */}
                     <p className="text-gray-300 group-hover:text-gray-800">Description of project 2</p> {/* Text changes to dark gray */}
 
                   </div>
@@ -244,12 +244,12 @@ const MainContent = () => {
                     <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all " />
                     <div className="flex items-start justify-between">
                       <div>
-                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Python Coding Tutor</h3>
-                        <p className="text-gray-300 mt-1">Detroit Education Society</p>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Fellow</h3>
+                        <p className="text-gray-300 mt-1">Headstarter</p>
                       </div>
-                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2022-2023</span>
+                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2024-2025</span>
                     </div>
-                    <p className="text-gray-400 mt-4">Prepared Course Materials Taught Coding Language To A Multitude of Students</p>
+                    <p className="text-gray-400 mt-4">Built 5+ AI apps  & APIs using OpenAI, Pinecone, StripeAPI with 98% accuracy as seen by 100+ users. Coached by Amazon, Citadel and Bloomberg engineers </p>
                   </div>
                 </div>
               </div>
