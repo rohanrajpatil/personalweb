@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-
+import MouseMask from './MouseMask';
 const MainContent = () => {
   const [inputValue, setInputValue] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -11,14 +11,6 @@ const MainContent = () => {
   const [messages, setMessages] = useState<{ text: string; showResponse: boolean }[]>([]);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   useEffect(() => {
     if (messages.length > 0 && scrollContainerRef.current) {
@@ -101,22 +93,10 @@ const MainContent = () => {
         }
       `}</style>
 
-      {/* Background Image */}
-      <div 
-        className="fixed inset-0 bg-[url('/neural-net.jpg')] bg-cover bg-center opacity-100 transition-opacity pointer-events-none"
-        style={{
-          maskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent 50%)`,
-          WebkitMaskImage: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, black, transparent 50%)`
-        }}
-      />
 
-      {/* Cursor Glow Effect */}
-      <div 
-        className="pointer-events-none fixed inset-0 z-1 transition-opacity"
-        style={{
-          background: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(29, 78, 216, 0.3), transparent 50%)`
-        }}
-      />
+
+        <MouseMask />
+
 
       {/* Top Navigation - Now Right Side Navigation */}
       <div className="fixed right-0 top-0 bottom-0 w-20 flex flex-col items-center py-5">
@@ -176,13 +156,21 @@ const MainContent = () => {
           </div>
           <AssistantMessage>
             <section id="about" className="flex flex-col items-center justify-center">
-              <h2 className="text-4xl font-bold mb-8">About Me</h2>
+              {/* ← HEADSHOT ABOVE TITLE */}
+              <img
+                src="/headshot.png"
+                alt="Headshot"
+                className="w-64 h-64 rounded-full mb-6 object-cover relative bg-[#1a1a1a] z-20"
+              />
+
+              <h2 className="text-4xl font-bold mb-8">I am Rohan Rajasekhara Patil</h2>
               <p className="text-lg text-gray-300 max-w-2xl text-center">
-                Welcome! I'm a passionate developer with expertise in web technologies.
+              Welcome! I’m a passionate developer eager to deepen my grasp of machine learning and to explore both its real‑world applications and the underlying mechanics that make it tick.
               </p>
             </section>
           </AssistantMessage>
         </div>
+        {/* … */}
 
         {/* Projects Section */}
         <div id="projects" className="h-screen overflow-hidden flex flex-col">
@@ -225,8 +213,8 @@ const MainContent = () => {
               <div className="max-w-2xl w-full space-y-8">
                 <div className="relative group">
                   <div className="absolute -left-3 top-0 h-full w-[2px] bg-gradient-to-b from-[#10a37f] to-transparent" />
-                  <div className="bg-[#2a2a2a] p-8 rounded-lg transform transition-all duration-300 border-l-4 border-[#10a37f] group-hover:translate-x-2">
-                    <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all duration-300" />
+                  <div className="bg-[#2a2a2a] p-8 rounded-lg transform transition-all  border-l-4 border-[#10a37f] group-hover:translate-x-2">
+                    <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all " />
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Senior Developer</h3>
@@ -239,8 +227,8 @@ const MainContent = () => {
                 </div>
                 <div className="relative group">
                   <div className="absolute -left-3 top-0 h-full w-[2px] bg-gradient-to-b from-[#10a37f] to-transparent" />
-                  <div className="bg-[#2a2a2a] p-8 rounded-lg transform transition-all duration-300 border-l-4 border-[#10a37f] group-hover:translate-x-2">
-                    <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all duration-300" />
+                  <div className="bg-[#2a2a2a] p-8 rounded-lg transform transition-all  border-l-4 border-[#10a37f] group-hover:translate-x-2">
+                    <div className="absolute -left-6 top-8 w-4 h-4 rounded-full bg-[#10a37f] group-hover:scale-150 group-hover:shadow-[0_0_20px_#10a37f] transition-all " />
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Full Stack Developer</h3>
@@ -297,7 +285,7 @@ const MainContent = () => {
               <div className="max-w-2xl w-full space-y-6">
                 <div className="group">
                   <div className="relative bg-[#2a2a2a] p-6 rounded-xl overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform" />
                     <div className="relative z-10">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-xl bg-[#10a37f]/20 flex items-center justify-center group-hover:bg-[#10a37f]/30 transition-colors">
@@ -321,7 +309,7 @@ const MainContent = () => {
                 </div>
                 <div className="group">
                   <div className="relative bg-[#2a2a2a] p-6 rounded-xl overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-500" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#10a37f] opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform" />
                     <div className="relative z-10">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-xl bg-[#10a37f]/20 flex items-center justify-center group-hover:bg-[#10a37f]/30 transition-colors">
