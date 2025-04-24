@@ -160,7 +160,7 @@ const MainContent = () => {
             <section id="about" className="flex flex-col items-center justify-center">
               {/* ← HEADSHOT ABOVE TITLE */}
               <img
-                src="/headshot.png"
+                src="./headshot.png"
                 alt="Headshot"
                 className="w-64 h-64 rounded-full mb-6 object-cover relative bg-[#1a1a1a] z-20"
               />

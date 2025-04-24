@@ -1,5 +1,5 @@
 {
-  "homepage": "http://rohanrpatil.github.io/personalweb",
+  "homepage": "http://rohanrajpatil.github.io/personalweb/",
   "name": "personalweb",
   "version": "0.1.0",
   "private": true,
@@ -8,26 +8,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy" : "npm run build",
-    "deploy" :  "gh-pages -d build",
-    "export" : "next export"
+    "predeploy": "npm run build",
+    "deploy": "node -e \"require('fs').writeFileSync('out/.nojekyll','')\" && gh-pages --dotfiles -d out"
   },
   "dependencies": {
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.18",
-    "claude": "^0.0.6",
+    "claude": "^0.0.1",
     "deploy": "^1.0.3",
-    "gh-pages": "^6.3.0",
     "next": "^15.3.1-canary.9",
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "resend": "^4.3.0",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "typescript": "5.8.3"
   }
 }
