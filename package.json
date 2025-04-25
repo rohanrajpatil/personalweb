@@ -1,5 +1,4 @@
 {
-  "homepage": "http://rohanrajpatil.github.io/personalweb/",
   "name": "personalweb",
   "version": "0.1.0",
   "private": true,
@@ -18,6 +17,7 @@
     "autoprefixer": "^10.4.18",
     "claude": "^0.0.1",
     "deploy": "^1.0.3",
+    "dotenv": "^16.5.0",
     "next": "^15.3.1-canary.9",
     "postcss": "^8.4.35",
     "react": "^18.2.0",

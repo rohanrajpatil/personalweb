@@ -6,7 +6,7 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
-  output: 'export',
+//  output: 'export',
   basePath: isProd ? '/personalweb' : "",
   assetPrefix: isProd ? '/personalweb' : "",
   trailingSlash: true,
