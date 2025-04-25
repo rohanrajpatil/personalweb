@@ -6,10 +6,10 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
-  output: 'export',
-  basePath: isProd ? '/personalweb' : "",
-  assetPrefix: isProd ? '/personalweb' : "",
-  trailingSlash: true,
+//  output: 'export',
+//  basePath: isProd ? '/personalweb' : "",
+//  assetPrefix: isProd ? '/personalweb' : "",
+//  trailingSlash: true,
 };
 
 module.exports = nextConfig;
