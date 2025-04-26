@@ -353,7 +353,7 @@ const MainContent = () => {
               <AssistantMessage>
                 <section className="flex flex-col items-center justify-center">
                   <p className="text-lg text-gray-300 max-w-2xl text-center">
-                    Loading...
+                    Checking My Email...
                   </p>
                 </section>
               </AssistantMessage>
