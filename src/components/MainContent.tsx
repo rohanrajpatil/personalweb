@@ -177,7 +177,7 @@ const MainContent = () => {
         {/* Projects Section */}
         <div id="projects" className="h-screen overflow-hidden flex flex-col">
           <div className="min-h-[60px] bg-[#1a1a1a] flex items-end">
-            <UserMessage message="What have you orked on?" />
+            <UserMessage message="What have you corked on?" />
           </div>
           <AssistantMessage>
             <section id="projects" className="flex flex-col items-center justify-center">
