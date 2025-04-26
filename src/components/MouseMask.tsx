@@ -45,7 +45,7 @@ export default function MouseMask() {
         ref={bgRef}
         className="
           fixed inset-0
-          bg-[url('/personalweb/neural-net.jpg')]
+          bg-[url('/neural-net.jpg')]
           bg-cover bg-center
           opacity-100 transition-opacity
           pointer-events-none
