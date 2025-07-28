@@ -243,7 +243,7 @@ const MainContent = () => {
                         <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">AI Specialist in Finance and English</h3>
                         <p className="text-gray-300 mt-1">Outlier</p>
                       </div>
-                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2024-Present</span>
+                      <span className="text-sm text-[#10a37f] bg-[#10a37f]/10 px-3 py-1 rounded-full">2025-Present</span>
                     </div>
                     <p className="text-gray-400 mt-4">Design, optimize, and deploy cutting-edge AI models in English and finance, driving impactful, ethical solutions in Generative AI.
                     </p>
@@ -317,53 +317,18 @@ const MainContent = () => {
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Graduated</h3>
-                          <p className="text-gray-300">Novi High School</p>
-                        </div>
-                      </div>
-                      <div className="ml-16">
-                        <div className="text-sm text-[#10a37f] mb-2">2021 - 2025</div>
-                        <div className="text-gray-400"> {/* Container div for shared text color */}
-                        <p className="mb-2">
-                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Relevant Coursework:</span> Calculus I, II, Multivariable, AP Computer Science
-            </p>
-            <p className="mb-2">
-                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Weighted GPA:</span> 4.5+
-            </p>
-            <p>
-                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">ACT Score :</span> 36/36
-            </p>
-</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* UC Berkeley Entry */}
-                <div className="group">
-                  <div className="relative bg-[#2a2a2a] p-6 rounded-xl overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-10 rounded-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform" />
-                    <div className="relative z-10">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
-                          <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v7" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-semibold text-white group-hover:text-blue-600 transition-colors">Expected Graduation</h3>
+                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Expected Graduation</h3>
                           <p className="text-gray-300">University of California, Berkeley</p>
                         </div>
                       </div>
                       <div className="ml-16">
-                        <div className="text-sm text-blue-600 mb-2">2025 - 2028</div>
+                        <div className="text-sm text-[#10a37f] mb-2">2024 - 2028</div>
                         <div className="text-gray-400"> {/* Container div for shared text color */}
                         <p className="mb-2">
-                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Major:</span> (Your intended major here)
+                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Major:</span> (Electrical Engineering and Computer Science)
             </p>
             <p className="mb-2">
-                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Status:</span> Incoming Student
+                <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Status:</span> Student
             </p>
             <p>
                 <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Expected Graduation:</span> 2028
