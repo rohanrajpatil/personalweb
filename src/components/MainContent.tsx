@@ -322,7 +322,7 @@ const MainContent = () => {
                         </div>
                       </div>
                       <div className="ml-16">
-                        <div className="text-sm text-[#10a37f] mb-2">2024 - 2028</div>
+                        <div className="text-sm text-[#10a37f] mb-2">2025 - 2028</div>
                         <div className="text-gray-400"> {/* Container div for shared text color */}
                         <p className="mb-2">
                 <span className="text-gray-400 group-hover:text-white transition-colors duration-200 ease-in-out">Major:</span> (Electrical Engineering and Computer Science)
