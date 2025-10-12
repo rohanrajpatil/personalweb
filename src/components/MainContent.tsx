@@ -216,7 +216,25 @@ const MainContent = () => {
                             {/* Modified content - Text colors invert to dark on hover */}
                             {/* Using black for heading, dark gray for paragraph */}
                             <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">MakeMore</h3> {/* Text changes to black */}
-                            <p className="text-gray-300 group-hover:text-gray-800">An autoregressive character-level language model, with a wide choice of models from bigrams all the way to a Transformer (exactly as seen in GPT)</p> {/* Text changes to dark gray */}
+                            <p className="text-gray-300 group-hover:text-gray-800">I built a character-level language model in PyTorch that generates novel text.By learning the patterns in a given dataset, it becomes a creative engine for new words or names</p> {/* Text changes to dark gray */}
+                    </div>
+                  </a>
+                </div>
+                <div className="group relative">
+                  {/* Keep the gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* Inner card div with background and inverted text colors on hover */}
+                  <a 
+                        href="https://github.com/rohanrajpatil" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="block"
+                      >
+                          <div className="bg-[#2a2a2a] p-6 rounded-lg scale-100 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,163,127,0.15)] cursor-pointer relative transform transition-all duration-300 ease-in-out hover:bg-[#10a37f]">
+                            {/* Modified content - Text colors invert to dark on hover */}
+                            {/* Using black for heading, dark gray for paragraph */}
+                            <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-black">NFL GamePred</h3> {/* Text changes to black */}
+                            <p className="text-gray-300 group-hover:text-gray-800">I developed a machine learning model using logistic regression and historical team performances to predict the winners of upcoming NFL games.</p> {/* Text changes to dark gray */}
                     </div>
                   </a>
                 </div>
@@ -317,7 +335,7 @@ const MainContent = () => {
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">Expected Graduation</h3>
+                          <h3 className="text-xl font-semibold text-white group-hover:text-[#10a37f] transition-colors">In Progress</h3>
                           <p className="text-gray-300">University of California, Berkeley</p>
                         </div>
                       </div>
