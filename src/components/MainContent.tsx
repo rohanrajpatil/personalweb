@@ -416,9 +416,6 @@ const MainContent = () => {
           </div>
         </form>
       </div>
-
-      {/* Help Button */}
-      <button className="fixed bottom-4 right-4 text-[#8e8ea0] text-lg z-40">?</button>
     </div>
   );
 };
